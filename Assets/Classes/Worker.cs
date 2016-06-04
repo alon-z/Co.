@@ -4,8 +4,8 @@
 
     public Worker(string givenName)
     {
-        givenName = this.name;
-        if (name.CompareTo("") == 0)
+        this.name = givenName;
+        if (givenName.CompareTo("") == 0)
         {
             this.name = "Empty";
         }
