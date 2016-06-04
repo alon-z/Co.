@@ -9,12 +9,20 @@ public class WorkersPanelController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         Worker test = new Worker("testingo");
-        Vector2 mainV = new Vector2(0, 0);
-        GameObject a = Instantiate(WorkerFrame, mainV, Quaternion.identity) as GameObject;
-        a.transform.SetParent(panel.transform);
+        createPanel(test, new Vector3(0,100,1));
     }
 	
 	void FixedUpdate () {
 	    
 	}
+
+    GameObject createPanel(Worker worker, Vector3 position)
+    {
+        GameObject panel = Instantiate(WorkerFrame) as GameObject;
+        RectTransform rect = panel.GetComponent<RectTransform>();
+        rect.SetParent(this.panel.GetComponent<RectTransform>());
+        rect.localScale = Vector3.one;
+        rect.anchoredPosition = position;
+        return panel;
+    }
 }
