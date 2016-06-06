@@ -2,9 +2,11 @@
 
 public class Worker {
 
+    static List<Worker> workers = new List<Worker>();
+
     string name;
 
-    static List<Worker> workers = new List<Worker>();
+    List<Stat> stats;
 
     public Worker(string givenName)
     {
@@ -13,6 +15,7 @@ public class Worker {
         {
             this.name = "Empty";
         }
+        this.stats = new List<Stat>();
         workers.Add(this);
     }
 
@@ -29,6 +32,22 @@ public class Worker {
     public void destroy()
     {
         workers.Remove(this);
+    }
+
+    public void addStat(Stat stat)
+    {
+        stats.Add(stat);
+    }
+
+    public Stat searchStat(string name)
+    {
+        Stat found = null;
+        foreach(Stat curr in stats)
+        {
+            if (curr.getName().CompareTo(name) == 0) { found = curr; }
+        }
+
+        return found;
     }
 
 }

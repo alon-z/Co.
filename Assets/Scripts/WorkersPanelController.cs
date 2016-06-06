@@ -12,17 +12,11 @@ public class WorkersPanelController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         frameHight = (WorkerFrame as GameObject).GetComponent<RectTransform>().sizeDelta.y;
-        for (int a = 0; a < 10; a++)
-        {
-            new Worker("No. " + (a + 1));
-        }
-        fillPanel();
-        panel.GetComponent<RectTransform>().sizeDelta = new Vector2(panel.GetComponent<RectTransform>().sizeDelta.x, calcTotalHight());
     }
 	
 	void FixedUpdate () {
-	    
-	}
+        fillPanel();
+    }
 
     GameObject createPanel(Worker worker, Vector3 position)
     {
@@ -37,12 +31,16 @@ public class WorkersPanelController : MonoBehaviour {
 
     void fillPanel()
     {
+        DeleteAllChilds(panel);
+
         Vector3 vector = new Vector3(0f, -15f, 0f);
         foreach (Worker worker in Worker.getWorkers())
         {
             createPanel(worker, vector);
             vector.y -= frameHight + 5f;
         }
+
+        panel.GetComponent<RectTransform>().sizeDelta = new Vector2(panel.GetComponent<RectTransform>().sizeDelta.x, calcTotalHight());
     }
 
     float calcTotalHight()
@@ -54,5 +52,17 @@ public class WorkersPanelController : MonoBehaviour {
         }
 
         return hight;
+    }
+
+    void DeleteAllChilds(GameObject pObj)
+    {
+        if (pObj != null)
+        {
+            for (int i = 0; i < pObj.transform.childCount; i++)
+            {
+                GameObject.Destroy(pObj.transform.GetChild(i).gameObject);
+            }
+        }
+        else Debug.LogError("GameObject does not exist anymore!");
     }
 }

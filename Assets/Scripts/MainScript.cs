@@ -1,27 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
-public class MainUIController : MonoBehaviour {
+public class MainScript : MonoBehaviour {
 
+    static float timer = 1f;
     float timeLeft;
 
-    public void changeScene(string Name)
-    {
-        SceneManager.LoadScene(Name);
+    // Use this for initialization
+    void Start () {
+        timeLeft = timer;
     }
-
-    void Start()
-    {
-        timeLeft = 10f;
-    }
-
-    void Update()
-    {
+	
+	// Update is called once per frame
+	void Update () {
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0)
         {
-            timeLeft = 10f;
+            timeLeft = timer;
 
             foreach (Worker worker in Worker.getWorkers())
             {
