@@ -1,0 +1,5 @@
+<StackLayout>
+    <Label text="Name:" textWrap="true"></Label>
+    <TextField hint="Jake malik" [(ngModel)]="name"></TextField>
+    <Button text="Add" (tap)="Add()"></Button>
+</StackLayout>

@@ -1,0 +1,5 @@
+<ActionBar title="Co." icon="">
+</ActionBar>
+<StackLayout>
+    <Button text="Workers" (tap)="moveTo('Workers')"></Button>
+</StackLayout>
