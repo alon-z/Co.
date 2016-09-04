@@ -40,3 +40,6 @@ buck-out/
 android/app/libs
 android/keystores/debug.keystore
 android\app\build\outputs\apk\*
+
+# VSCode
+.vscode/launchReactNative.js
