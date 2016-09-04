@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { View, ListView, Text, ScrollView } from 'react-native';
 
 import stubData from './stub.json';
+import names from './names.json';
 
 import Worker_Mini_Card from './worker_mini_card'
 
@@ -16,6 +17,11 @@ export default class Workers extends Component {
 
     render() {
         const styles = require('./styles');
+
+        var addWorker = () => {
+            // Create a rundom name
+        };
+
         return (
             <ScrollView style={styles.scrollView}>
                 <View style={styles.container}>
