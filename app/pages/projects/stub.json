@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Trex",
+        "members": [1,2],
+        "steps": [
+            {
+                "name": "Desing",
+                "goals": [
+                    {
+                        "name": "art",
+                        "amount": 100
+                    }
+                ]
+            }
+        ]
+    }
+]

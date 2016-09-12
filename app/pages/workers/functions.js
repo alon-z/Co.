@@ -2,9 +2,34 @@ import React from 'react';
 import getRandomInt from '../../global/functions.js';
 
 import names from './names.json';
-import skills from './../../global/skills.json';
+//import skills from './../../global/skills.json';
 
-export default addWorker = function () {
+// Reqa: A worker, a callBack function
+export var removeWorker = function (worker, callBack) {
+    var workers = [];
+    storage.load({
+            key: 'Workers',
+            autoSync: false,
+            syncInBackground: false
+        }).then(ret => {
+            workers = ret.workers;
+        }).catch(err => {
+            console.error(err.message);
+        })
+    console.log("!!!!!!!!!!!!!!!!!!1" + workers)
+    workers.splice(worker.id,1);
+    storage.save({
+      key: 'Workers',
+      rawData: { 
+          workers: workers
+      },
+      expires: null
+    });
+
+    callBack();
+}
+
+var AddWorker = function () {
 
     // Selecting random name
 
